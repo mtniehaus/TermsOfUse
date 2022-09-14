@@ -19,17 +19,29 @@
 			   		theDiv.style.display = "block";
 			    }
 			}
+
+			function doIt() {
+                // Save the time zone ID in local storage
+                localStorage.TimeZone = document.getElementById('TZ').value;
+                // Submit the form to continue
+                document.forms[0].submit();
+            }
+
 		</script>
 	</head>
 
 	<body>
 
-		<p class="input-label">What time zone are you in?</p> 
+		<p class="input-label">What time zone are you in?</p>
+		<br>
+		
+		<select id="Timezone" name="Timezone" class="win-dropdown">
+
 		<!-- 
 			To generate TZ options:
 			Get-TimeZone -ListAvailable | % { "<option value='$($_.Id)'>$($_.DisplayName)</option>" } | out-file tz.htm
+			Content pasted in below, since it looks like Azure doesn't support an ASP include.
 		 -->
-		<select id="Timezone" name="Timezone" class="win-dropdown">
 
 <option value='Dateline Standard Time'>(UTC-12:00) International Date Line West</option>
 <option value='UTC-11'>(UTC-11:00) Coordinated Universal Time-11</option>
@@ -175,11 +187,20 @@
 
 		</select>
 
+		<form action="<% =Request.QueryString('redirect_uri') %>" method="GET">
+			<input type='hidden' name='OpaqueBlob' id='OpaqueBlob' value='<% =Request.QueryString("client-request-id") %>' >
+            <input type='hidden' name='IsAccepted' id='IsAccepted' value="true" >
+            <input type='hidden' name='client-request-id' id='client-request-id' value='<% =Request.QueryString("client-request-id") %>' >			
+		</form>
+
 		<br><br>
-		<button type="button" onClick="showHide()" class="control-button button-two button_primary win-button">
+		<button type="button" onClick="doIt()" class="control-button button-two button_primary win-button">
+			Accept
+		</button>
+		<button type="button" onClick="showHide()" class="control-button win-button">
 			Details
 		</button>
-		<button type="button" onClick="window.location.reload()" class="control-button button-two button_primary win-button">
+		<button type="button" onClick="window.location.reload()" class="control-button win-button">
 		   Reload Page
 		</button>
 		<br>
