@@ -187,10 +187,10 @@
 
 		</select>
 
-		<form action="<% =Request.QueryString('redirect_uri') %>" method="GET">
+		<form action="<% =Request.QueryString("redirect_uri") %>" method="GET">
 			<input type='hidden' name='OpaqueBlob' id='OpaqueBlob' value='<% =Request.QueryString("client-request-id") %>' >
             <input type='hidden' name='IsAccepted' id='IsAccepted' value="true" >
-            <input type='hidden' name='client-request-id' id='client-request-id' value='<% =Request.QueryString("client-request-id") %>' >			
+            <input type='hidden' name='client-request-id' id='client-request-id' value='<% =Request.QueryString("client-request-id") %>' >
 		</form>
 
 		<br><br>
