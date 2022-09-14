@@ -3,15 +3,8 @@
 
 <!-- #include file ="json2.asp" --> 
 
-		<link rel='stylesheet' href='<%
-			Dim osInfo
-			Set osInfo = JSON.parse(Request.ServerVariables("http_cxh_osVersionInfo"))
-			If osInfo.buildnumber > 20000 then
-				Response.Write("oobe-light.css")
-			Else
-				Response.Write("oobe-desktop.css")
-			End if
-		%>'>
+		<link rel='stylesheet' href='oobe-desktop.css'>
+
 		<script>
 			function showHide() {
 				const theDiv = document.getElementById("debugInfo");
