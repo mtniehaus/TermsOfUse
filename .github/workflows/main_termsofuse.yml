@@ -16,8 +16,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Setup MSBuild path
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
+
+      - name: Restore NuGet packages
+        run: nuget restore
+
       - name: Publish to folder
-        run: xcopy *.* \published /s /e /i
+        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -44,5 +53,5 @@ jobs:
         with:
           app-name: 'TermsOfUse'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F92289A8322A4356AB48749C6DC099DC }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4BD10D56139546AF95EFDAD984C11407 }}
           package: .
