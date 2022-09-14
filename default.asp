@@ -1,6 +1,8 @@
 <html>
 	<head>
+
 <!-- #include file ="json2.asp" --> 
+
 		<link rel='stylesheet' href='<%
 			set osInfo = JSON.parse(Request.ServerVariables("http_cxh_osVersionInfo"))
 			if osInfo.get("buildnumber") > "20000" then
@@ -20,6 +22,7 @@
 			}
 		</script>
 	</head>
+
 	<body>
 
 		<br>			
