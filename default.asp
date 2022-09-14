@@ -1,8 +1,13 @@
 <html>
 	<head>
-
-<!-- #include file ="json2.asp" --> 
-
+		<%
+			Dim OobeStyle
+			If Instr(Request.ServerVariables("http_cxh_osVersionInfo"), "19") > 0 then
+				OobeStyle = "oobe-desktop.css"
+			else
+				OobeStyle = "oobe-light.css"
+			End if
+		%>
 		<link rel='stylesheet' href='oobe-desktop.css'>
 
 		<script>
