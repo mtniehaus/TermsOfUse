@@ -24,11 +24,15 @@
 
 	<body>
 
+		<!-- 
+			To generate TZ options:
+			Get-TimeZone -ListAvailable | % { "<option value='$($_.Id)'>$($_.DisplayName)</option>" } | out-file tz.htm
+		 -->
 		<select id="Timezone" name="Timezone" class="win-dropdown">
-
+<!-- #include file="tz.htm" -->  
 		</select>
 
-		<br>			
+		<br><br>
 		<button type="button" onClick="showHide()" class="control-button button-two button_primary win-button">
 			Details
 		</button>
