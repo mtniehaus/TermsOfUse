@@ -8,7 +8,7 @@
 				OobeStyle = "oobe-light.css"
 			End if
 		%>
-		<link rel='stylesheet' href='oobe-desktop.css'>
+		<link rel='stylesheet' href='<% =OobeStyle %>'>
 
 		<script>
 			function showHide() {
