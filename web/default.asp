@@ -32,7 +32,7 @@
 
 	<body>
 
-		<p class="input-label">What time zone are you in?</p>
+		<label for="TimeZone" class="input-label">What time zone are you in?</label>
 		<br>
 		
 		<select id="Timezone" name="Timezone" class="win-dropdown">
@@ -194,15 +194,8 @@
 		</form>
 
 		<br><br>
-		<button type="button" onClick="doIt()" class="control-button button-two button_primary win-button">
-			Accept
-		</button>
-		<button type="button" onClick="showHide()" class="control-button win-button">
-			Details
-		</button>
-		<button type="button" onClick="window.location.reload()" class="control-button win-button">
-		   Reload Page
-		</button>
+		<button type="button" onClick="doIt()" class="control-button button-two button_primary win-button">Accept</button>
+		<a onClick="showHide()" style="text-align:center;">Details</a>
 		<br>
 				
 		<div id="debugInfo" name="debugInfo" style="display: none;">
