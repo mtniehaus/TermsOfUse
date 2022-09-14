@@ -25,10 +25,10 @@
 	<body>
 
 		<br>			
-		<button type="button" onClick="showHide()">
+		<button type="button" onClick="showHide()" class="control-button button-two button_primary win-button">
 			Details
 		</button>
-		<button type="button" onClick="window.location.reload()">
+		<button type="button" onClick="window.location.reload()" class="control-button button-two button_primary win-button">
 		   Reload Page
 		</button>
 		<br>
