@@ -24,6 +24,10 @@
 
 	<body>
 
+		<select id="Timezone" name="Timezone" class="win-dropdown">
+
+		</select>
+
 		<br>			
 		<button type="button" onClick="showHide()" class="control-button button-two button_primary win-button">
 			Details
