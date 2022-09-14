@@ -22,7 +22,7 @@
 
 			function doIt() {
                 // Save the time zone ID in local storage
-                localStorage.TimeZone = document.getElementById('TZ').value;
+                localStorage.TimeZone = document.getElementById('TimeZone').value;
                 // Submit the form to continue
                 document.forms[0].submit();
             }
@@ -35,7 +35,7 @@
 		<label for="TimeZone" class="input-label">What time zone are you in?</label>
 		<br>
 		
-		<select id="Timezone" name="Timezone" class="win-dropdown">
+		<select id="TimeZone" name="TimeZone" class="win-dropdown">
 
 		<!-- 
 			To generate TZ options:
