@@ -29,7 +29,7 @@
 			Get-TimeZone -ListAvailable | % { "<option value='$($_.Id)'>$($_.DisplayName)</option>" } | out-file tz.htm
 		 -->
 		<select id="Timezone" name="Timezone" class="win-dropdown">
-<!-- #include file="tz.htm" -->  
+<!-- #include file="tz.inc" -->  
 		</select>
 
 		<br><br>
