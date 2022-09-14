@@ -195,7 +195,7 @@
 
 		<br><br>
 		<button type="button" onClick="doIt()" class="control-button button-two button_primary win-button">Accept</button>
-		<a onClick="showHide()" style="text-align:center;">Details</a>
+		<a onClick="showHide()" style="text-align:right;">Details</a>
 		<br>
 				
 		<div id="debugInfo" name="debugInfo" style="display: none;">
