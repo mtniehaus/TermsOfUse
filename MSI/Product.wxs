@@ -1,0 +1,44 @@
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <Product Id="*" Name="AutopilotTOU" Language="1033" Version="1.0.0.0" Manufacturer="Oofhours.com" UpgradeCode="9de433ea-9f97-4da2-941c-25ce6a1ca66c">
+        <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+        <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+        <MediaTemplate EmbedCab="yes" />
+
+        <Feature Id="ProductFeature" Title="AutopilotBranding" Level="1">
+            <Component Id="RunScript.ps1" Guid="e73f305d-521e-48dd-9f64-738ff622f268" DiskId="1" Directory="APPLICATIONFOLDER">
+                <File Id="RunScript.ps1" Name="RunScript.ps1" Source="RunScript.ps1"/>
+            </Component>
+        </Feature>
+
+        <Property Id="POWERSHELLEXE">
+        <RegistrySearch Id="POWERSHELLEXE"
+            Type="raw"
+            Root="HKLM"
+            Key="SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell"
+            Name="Path" />
+        </Property>
+        <Condition Message="This application requires Windows PowerShell.">
+            <![CDATA[Installed OR POWERSHELLEXE]]>
+        </Condition>
+
+        <SetProperty Id="RunScript"
+            Before ="RunScript"
+            Sequence="execute"
+            Value="&quot;[POWERSHELLEXE]&quot; -NoProfile -NonInteractive -InputFormat None -ExecutionPolicy Bypass -Command &quot;&amp; '[#RunScript.ps1]' ; exit $$($Error.Count)&quot;" />
+
+        <CustomAction Id="RunScript" BinaryKey="WixCA" DllEntry="WixQuietExec64" Execute="deferred" Return="check" Impersonate="yes" />
+
+        <InstallExecuteSequence>
+            <Custom Action="RunScript" Before="InstallFinalize"><![CDATA[NOT Installed]]></Custom>
+        </InstallExecuteSequence>
+
+    </Product>
+    <Fragment>
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFiles64Folder">
+                <Directory Id="APPLICATIONFOLDER" Name="AutopilotTOU">
+                </Directory>
+            </Directory>
+        </Directory>
+    </Fragment>
+</Wix>
