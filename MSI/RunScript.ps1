@@ -26,7 +26,8 @@ $oobeXml = @"
 </FirstExperience>
 "@
 if (-not (Test-Path "C:\Windows\System32\Oobe\Info")) {
-    MkDir "C:\Windows\System32\Oobe.Info" | Out-Null
+    Write-Host "Creating C:\Windows\System32\Oobe\Info"
+    MkDir "C:\Windows\System32\Oobe\Info" | Out-Null
 }
 $oobeXml | Out-File "C:\Windows\System32\Oobe\Info\oobe.xml" -Force -Encoding utf8
 
