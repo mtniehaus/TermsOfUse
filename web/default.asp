@@ -35,7 +35,7 @@
 		<label for="TimeZone" class="input-label">What time zone are you in?</label>
 		<br>
 		
-		<select id="TimeZone" name="TimeZone" class="win-dropdown">
+		<select id="TimeZone" name="TimeZone" class="win-dropdown" style="width: 60%;">
 
 		<!-- 
 			To generate TZ options:
